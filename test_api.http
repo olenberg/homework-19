@@ -1,0 +1,44 @@
+POST http://127.0.0.1:5000/users/
+Accept: application/json
+Content-Type: application/json
+
+{
+  "username": "artur",
+  "password":"P@ssw0rd",
+  "role": "admin"
+}
+
+###
+
+POST http://127.0.0.1:5000/users/
+Accept: application/json
+Content-Type: application/json
+
+{
+  "username": "vasya",
+  "password":"my_little_pony",
+  "role": "user"
+}
+
+###
+
+POST http://127.0.0.1:5000/users/
+Accept: application/json
+Content-Type: application/json
+
+{
+  "username": "oleg",
+  "password":"qwerty",
+  "role": "user"
+}
+
+###
+
+POST http://127.0.0.1:5000/auth/
+Accept: application/json
+Content-Type: application/json
+
+{
+  "username": "artur",
+  "password": "P@ssw0rd"
+}
