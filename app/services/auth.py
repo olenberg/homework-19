@@ -6,7 +6,7 @@ from app.constants import SECRET, ALGO
 
 
 class AuthService:
-    def __init__(self, user_service: UserService):
+    def __init__(self, user_service):
         self.user_service = user_service
 
     def generate_tokens(self, username, password, is_refresh=False):

@@ -1,5 +1,5 @@
 from app.dao.model.user import User
-
+from app.setup_db import db
 
 class UserDAO:
     def __init__(self, session):
@@ -9,7 +9,7 @@ class UserDAO:
         return self.session.query(User).get(uid)
 
     def get_by_username(self, username):
-        return self.session.query(User).filter(User.username == username).one_or_none
+        return self.session.query(User).filter(User.username == username).one_or_none()
 
     def get_all(self):
         return self.session.query(User).all()

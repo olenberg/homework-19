@@ -32,27 +32,16 @@ class UserService:
     def delete(self, uid):
         self.dao.delete(uid)
 
-    # def get_hash(self, password):
-    #     return base64.b64encode(hashlib.pbkdf2_hmac(
-    #         'sha256',
-    #         password.encode('utf-8'),
-    #         PWD_HASH_SALT,
-    #         PWD_HASH_ITERATIONS
-    #     ))
-    #
-    # def compare_passwords(self, password_hash, other_password):
-    #     return hmac.compare_digest(
-    #         base64.b64decode(password_hash),
-    #         hashlib.pbkdf2_hmac('sha256', other_password.encode(), PWD_HASH_SALT, PWD_HASH_ITERATIONS)
-    #     )
-
     def get_hash(self, password):
         return base64.b64encode(hashlib.pbkdf2_hmac(
             'sha256',
-            password.encode('utf-8'), # Convert the password to byte
+            password.encode('utf-8'),
             PWD_HASH_SALT,
             PWD_HASH_ITERATIONS
         ))
 
-    def compare_passwords(self, hash_password, sec_password):
-        return hmac.compare_digest(base64.b64decode(hash_password), base64.b64decode(self.get_hash(sec_password)))
+    def compare_passwords(self, password_hash, other_password):
+        return hmac.compare_digest(
+            base64.b64decode(password_hash),
+            hashlib.pbkdf2_hmac('sha256', other_password.encode(), PWD_HASH_SALT, PWD_HASH_ITERATIONS)
+        )
